@@ -1,10 +1,10 @@
 from fastapi import FastAPI
-import models
-from database import engine
-from routers import sessions
+from models.study_log import Studylog
+from config.database import engine
+from router import study_log
 
 app = FastAPI()
 
-models.Base.metadata.create_all(bind=engine)
+Studylog.metadata.create_all(bind=engine)
 
-app.include_router(sessions.router)
+app.include_router(study_log.router)
