@@ -1,0 +1,56 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+
+# C extensions
+*.so
+
+# Packages
+.venv/
+env/
+venv/
+lib/
+build/
+dist/
+wheels/
+share/
+*.egg-info/
+
+# Development or Testing
+.idea/  # For PyCharm/IntelliJ IDE
+.vscode/ # For VS Code IDE (optional, some settings might be useful)
+.mypy_cache/
+pytest_cache/
+.tox/
+
+# Environment files
+.env
+.flaskenv
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvsnee
+*.njsproj
+*.vcproj
+s*.lnt
+*.ipch
+
+# Python specific
+pip-log.txt
+pip-delete-this-arg.txt
+
+# Databases
+*.sqlite
+*.sqlite3
+
+# OS generated files
+.DS_Store
+.directory
+
+# FastAPI specific files
+# If you use a specific database or file type, add them here.
+commands.txt
