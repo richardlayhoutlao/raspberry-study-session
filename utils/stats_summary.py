@@ -1,7 +1,7 @@
 import statistics
 
 def summarize_data(data_list):
-    temps = [d["temperature_score"] for d in data_list]
+    temps = [d["temperature"] for d in data_list]
     lights = [d["light_score"] for d in data_list]
     sounds = [d["sound_score"] for d in data_list]
 
