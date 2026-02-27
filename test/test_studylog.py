@@ -1,7 +1,7 @@
 from main import app
 from config.database import get_db
 from fastapi import status
-from utils import *
+from utils.stats_summary import *
 from models.study_log import Studylog
 
 app.dependency_overrides[get_db] = override_get_db

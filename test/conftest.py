@@ -7,7 +7,7 @@ from datetime import datetime
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from models.study_log import Studylog
-from utils import TestingSessionLocal
+from utils.stats_summary import TestingSessionLocal
 
 
 @pytest.fixture(autouse=True)
