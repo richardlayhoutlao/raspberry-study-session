@@ -3,6 +3,7 @@ from datetime import datetime
 
 class StudylogRequest(BaseModel):
     date_time: datetime
-    avg_noise: int
-    avg_light: int
+    noise_score: int
+    light_score: int
+    temperature_score: int
     focus_score: int
