@@ -23,19 +23,25 @@ def seed_test_data():
     studylog_1 = Studylog(
         id="97983be2-98b7-11e7-90cf-082e5f28d836",
         date_time=datetime.fromisoformat("2021-01-10T13:37:17"),
-        noise_score=45,
+        sound_score=45,
         light_score=300,
         temperature_score=22,
-        focus_score=85
+        focus_score=85,
+        score=85,
+        is_uncomfortable=False,
+        reasons=[]
     )
     
     studylog_2 = Studylog(
         id="88888be2-98b7-11e7-90cf-082e5f28d444",
         date_time=datetime.fromisoformat("2024-05-01T08:30:00"),
-        noise_score=30,
+        sound_score=30,
         light_score=450,
         temperature_score=24,
-        focus_score=92
+        focus_score=92,
+        score=92,
+        is_uncomfortable=False,
+        reasons=[]
     )
     
     db.add(studylog_1)

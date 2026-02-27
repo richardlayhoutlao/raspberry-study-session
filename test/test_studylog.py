@@ -9,35 +9,47 @@ app.dependency_overrides[get_db] = override_get_db
 studylog_1 = {
     "id": "97983be2-98b7-11e7-90cf-082e5f28d836",
     "date_time": "2021-01-10T13:37:17",
-    "noise_score": 45,
+    "sound_score": 45,
     "light_score": 300,
     "temperature_score": 22,
-    "focus_score": 85
+    "focus_score": 85,
+    "score": 85,
+    "is_uncomfortable": False,
+    "reasons": []
 }
 
 studylog_2 = {
     "id": "88888be2-98b7-11e7-90cf-082e5f28d444",
     "date_time": "2024-05-01T08:30:00",
-    "noise_score": 30,
+    "sound_score": 30,
     "light_score": 450,
     "temperature_score": 24,
-    "focus_score": 92
+    "focus_score": 92,
+    "score": 92,
+    "is_uncomfortable": False,
+    "reasons": []
 }
 
 request_data = {
     "date_time": "2021-01-20T13:37:17",
-    "noise_score": 50,
+    "sound_score": 50,
     "light_score": 350,
     "temperature_score": 23,
-    "focus_score": 80
+    "focus_score": 80,
+    "score": 80,
+    "is_uncomfortable": False,
+    "reasons": []
 }
 
 updated_request_data = {
     "date_time": "2021-01-20T15:00:00",
-    "noise_score": 40,
+    "sound_score": 40,
     "light_score": 400,
     "temperature_score": 25,
-    "focus_score": 88
+    "focus_score": 88,
+    "score": 88,
+    "is_uncomfortable": False,
+    "reasons": []
 }
 
 
@@ -71,13 +83,13 @@ def test_create_studylog():
 
     db = TestingSessionLocal()
     data_created: Studylog = db.query(Studylog).filter(
-        Studylog.noise_score == request_data["noise_score"],
+        Studylog.sound_score == request_data["sound_score"],
         Studylog.light_score == request_data["light_score"],
         Studylog.temperature_score == request_data["temperature_score"],
         Studylog.focus_score == request_data["focus_score"]
     ).first()
     assert len(db.query(Studylog).all()) == 3
-    assert data_created.noise_score == request_data["noise_score"]
+    assert data_created.sound_score == request_data["sound_score"]
     assert data_created.light_score == request_data["light_score"]
     assert data_created.temperature_score == request_data["temperature_score"]
     client.delete(f'/studylog/{data_created.id}')
@@ -87,7 +99,7 @@ def test_update_studylog():
     client.post('/studylog', json=request_data)
     db = TestingSessionLocal()
     data_created: Studylog = db.query(Studylog).filter(
-        Studylog.noise_score == request_data["noise_score"],
+        Studylog.sound_score == request_data["sound_score"],
         Studylog.light_score == request_data["light_score"],
         Studylog.temperature_score == request_data["temperature_score"],
         Studylog.focus_score == request_data["focus_score"]
@@ -100,7 +112,7 @@ def test_update_studylog():
     db = TestingSessionLocal()
     data_updated: Studylog = db.query(Studylog).filter(Studylog.id == data_created.id).first()
     assert update_response.status_code == 204
-    assert data_updated.noise_score == updated_request_data["noise_score"]
+    assert data_updated.sound_score == updated_request_data["sound_score"]
     assert data_updated.light_score == updated_request_data["light_score"]
     assert data_updated.temperature_score == updated_request_data["temperature_score"]
     assert data_updated.focus_score == updated_request_data["focus_score"]
@@ -118,7 +130,7 @@ def test_delete_studylog():
     db = TestingSessionLocal()
 
     data_created: Studylog = db.query(Studylog).filter(
-        Studylog.noise_score == request_data["noise_score"],
+        Studylog.sound_score == request_data["sound_score"],
         Studylog.light_score == request_data["light_score"],
         Studylog.temperature_score == request_data["temperature_score"],
         Studylog.focus_score == request_data["focus_score"]
