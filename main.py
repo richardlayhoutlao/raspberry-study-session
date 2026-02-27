@@ -3,7 +3,7 @@ from models.study_log import Studylog
 from config.database import engine
 from router import study_log
 from contextlib import asynccontextmanager
-from service.mqtt_subscriber import mqtt_subscriber
+from service.mqtt_service import mqtt_subscriber
 
 
 @asynccontextmanager

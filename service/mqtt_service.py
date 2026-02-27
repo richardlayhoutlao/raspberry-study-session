@@ -1,4 +1,12 @@
 import paho.mqtt.client as mqtt
+import json
+from datetime import datetime, timezone
+from pydantic import ValidationError
+
+from config.database import SessionLocal
+from models.study_log import Studylog
+from repository.study_log_repository import StudylogRepository
+from schemas.study_log_schema import StudylogRequest
 
 BROKER = "test.mosquitto.org"
 TOPIC = "Studylog-Richard"
@@ -22,6 +30,20 @@ class MQTTSubscriber:
     def _on_message(self, client, userdata, message):
         payload = message.payload.decode("utf-8", errors="replace")
         print(f"Received message on {message.topic}: {payload}")
+
+        db = SessionLocal()
+        try:
+            payload_data = StudylogRequest.model_validate_json(payload)
+            repository = StudylogRepository(db)
+            studylog = Studylog(**payload_data.model_dump())
+            created_studylog = repository.create(studylog)
+            print(f"Saved studylog with id: {created_studylog.id}")
+        except ValidationError as exc:
+            print(f"Invalid payload for studylog: {exc}")
+        except Exception as exc:
+            print(f"Failed to save MQTT payload to DB: {exc}")
+        finally:
+            db.close()
 
     def start(self):
         self.client.connect(self.broker)
