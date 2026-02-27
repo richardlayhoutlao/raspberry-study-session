@@ -47,13 +47,3 @@ def delete_studylog(studylog_id: str, service: StudylogService = Depends(get_stu
     success = service.delete_studylog(studylog_id)
     if not success:
         raise HTTPException(status_code=404, detail=STUDYLOG_NOT_FOUND)
-
-
-@router.get("/get_client_config/{studylog_id}", status_code=status.HTTP_200_OK)
-async def get_client_config(studylog_id: str, service: StudylogService = Depends(get_studylog_service)):
-    result = service.get_client_config(studylog_id)
-    if isinstance(result, JSONResponse):
-        return result
-    if "error" in result:
-        raise HTTPException(status_code=404, detail=result["error"])
-    return result
