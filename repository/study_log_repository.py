@@ -1,8 +1,6 @@
 from sqlalchemy.orm import Session
 from models.study_log import Studylog
 from datetime import datetime
-import pytz
-
 
 class StudylogRepository:
     def __init__(self, db: Session):

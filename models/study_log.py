@@ -11,7 +11,6 @@ class Studylog(Base):
     sound_score = Column(Integer, nullable=False)
     light_score = Column(Integer, nullable=False)
     temperature_score = Column(Float, nullable=False)
-    focus_score = Column(Integer, nullable=False)
     score = Column(Integer, nullable=False) 
     is_uncomfortable = Column(Boolean, nullable=False)
     reasons = Column(JSON, nullable=False)

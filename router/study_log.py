@@ -1,6 +1,5 @@
 from typing import Annotated
 from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 from service.study_log_service import StudylogService
 from repository.study_log_repository import StudylogRepository

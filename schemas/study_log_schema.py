@@ -7,7 +7,6 @@ class StudylogRequest(BaseModel):
     sound_score: int = 0
     light_score: int = 0
     temperature_score: float = 0
-    focus_score: int = 0
     score: int = 0
     is_uncomfortable: bool = False
     reasons: list[str] = Field(default_factory=list)

@@ -1,8 +1,5 @@
 import paho.mqtt.client as mqtt
-import json
-from datetime import datetime, timezone
 from pydantic import ValidationError
-
 from config.database import SessionLocal
 from models.study_log import Studylog
 from repository.study_log_repository import StudylogRepository
